@@ -1,20 +1,6 @@
-import { useEffect, useState } from "react"
+import React from "react"
 
-export default SearchPanel = () => {
-    const [param, setparam] = useState({
-        name: '',
-        personId: ''
-    })
-    const [users, setUsers] = useState([]);
-    const [list, setList] = useEffect([]);
-
-    useEffect(() => {
-        fetch('').then(async response => {//待填充URL
-            if (response.ok) {
-                setList(await response.json())
-            }
-        })
-    }, [param])
+export const SearchPanel = ({param,setparam,users}) => {
     return <from>
         <div>
             <input type='text' value={param.name} onChange={(evt) => setparam({
@@ -25,7 +11,7 @@ export default SearchPanel = () => {
                 ...param,
                 personId: evt.target.value
             })} >
-                {users.map(user => <option value={user}>{user.name}</option>)}
+                {users.map(user => <option value={user} key={user.id}>{user.name}</option>)}
             </select>
         </div>
     </from>
