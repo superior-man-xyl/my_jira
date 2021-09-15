@@ -1,6 +1,6 @@
 import React from "react"
 
-export const SearchPanel = ({param,setparam,users}) => {
+export const SearchPanel = ({param,setparam,users}) => { // 
     return <from>
         <div>
             <input type='text' value={param.name} onChange={(evt) => setparam({
