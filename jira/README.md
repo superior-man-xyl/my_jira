@@ -13,4 +13,4 @@
 本项目中在__json_server_mock__里建立了db.json
 设置一个 .env (上线后使用) 和 .env.development (开发时使用) 使用npm start时就是使用.env, 使用npm run build时就是使用.env.development 这就进行了一个灵活的切换
 
-## 使用Custom Hook来提取并复用代码
+## 使用Custom Hook (自定义组件)来提取并复用代码
