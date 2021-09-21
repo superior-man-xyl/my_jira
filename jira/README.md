@@ -17,3 +17,10 @@
 
 ## 改造为ts
 - qs报错，yarn add @types/qs 为qs安装一个ts的补丁，在node_modules里@types就会多一个qs文件夹，里面一个ts说明文件，index.d.ts,这东西是给js打补丁用的，因为哪些库都是用js开发的，要兼容ts就要加个ts补丁，也是ts说明书文件
+
+## 鸭子类型
+ts是面向接口编程的，而不是面向对象编程，就是说为某函数做类型定义，其不会在意其对应的是什么类型，只需要其类型中包含了其要用到的元素就行
+
+## 建立个专属的服务端
+使用 npx imooc-jira-tool，这个服务端是基于service worker 等于在浏览器建立了一个服务端，使用localstorage做数据库
+
