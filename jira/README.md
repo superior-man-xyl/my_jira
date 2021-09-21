@@ -14,3 +14,6 @@
 设置一个 .env (上线后使用) 和 .env.development (开发时使用) 使用npm start时就是使用.env, 使用npm run build时就是使用.env.development 这就进行了一个灵活的切换
 
 ## 使用Custom Hook (自定义组件)来提取并复用代码
+
+## 改造为ts
+- qs报错，yarn add @types/qs 为qs安装一个ts的补丁，在node_modules里@types就会多一个qs文件夹，里面一个ts说明文件，index.d.ts,这东西是给js打补丁用的，因为哪些库都是用js开发的，要兼容ts就要加个ts补丁，也是ts说明书文件
