@@ -26,3 +26,7 @@ ts是面向接口编程的，而不是面向对象编程，就是说为某函数
 做一个分布式服务端
 
 在这里之前的json-server就不用了，使用这个service worker
+
+## 接着做context
+
+最后梳理代码，使用authenticcated-app.tsx以及unauthenticcated-app文件夹，管理app的登陆状态和非登陆状态

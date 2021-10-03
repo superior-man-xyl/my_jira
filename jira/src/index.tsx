@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { loadDevTools } from 'jira-dev-tool'
+import { AppProvide } from './context/index';
 
 loadDevTools(() =>//使用loadDevTools，相当于为页面安装jira-dev-tools工具
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <AppProvide>
+        <App />
+      </AppProvide>
     </React.StrictMode>,
     document.getElementById('root')
   )
