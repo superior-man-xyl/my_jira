@@ -25,8 +25,12 @@ ts是面向接口编程的，而不是面向对象编程，就是说为某函数
 使用 npx imooc-jira-tool，这个服务端是基于service worker 等于在浏览器建立了一个服务端，使用localstorage做数据库
 做一个分布式服务端
 
-在这里之前的json-server就不用了，使用这个service worker
+在这里之前的json-server就不用了，使用这个service worker,其使用端口和前端项目一致
 
 ## 接着做context
 
-最后梳理代码，使用authenticcated-app.tsx以及unauthenticcated-app文件夹，管理app的登陆状态和非登陆状态
+最后梳理代码，使用authenticcated-app.tsx以及unauthenticcated-app文件夹，管理app的登陆状态和非登陆状态。
+
+## 使用fetch抽象通用http请求方法，增强通用性
+解决的问题：怎么样使每次请求都自动的带上token。
+utils下建立了一个http.ts，来封装fetch

@@ -1,7 +1,7 @@
 import React, { FormEvent } from "react";
 import { useAuth } from '../context/auth-context'
 
-const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
+// const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
 export const LoginScreen = () => {
     const { login, user } = useAuth();//使用了自定义hooks,使用useAuth（基于context），我们可以在全局的任何地方随意使用user数据，以及login，register，logout三个方法
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {// 来自于 interface FormEvent<T = Element> extends SyntheticEvent<T> {}

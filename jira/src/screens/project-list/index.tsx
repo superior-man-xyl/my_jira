@@ -3,6 +3,7 @@ import { SearchPanel } from "./search-panel";
 import React, { useState, useEffect } from "react";
 import * as qs from 'qs';//qs是一个url参数转化（parse和stringify）的js库。 
 import { cleanObject, useMount, useDebounce } from "utils"; //这个方法用于清理对象的空值，为了防止
+import { useHttp } from "utils/http";
 
 const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
 export const ProjectListScreen = () => {
@@ -13,13 +14,18 @@ export const ProjectListScreen = () => {
     const [users, setUsers] = useState([]);
     const [list, setList] = useState([]);
     const debouncedParam = useDebounce(param, 300);//对这个param做一个节流
+    // 使用我们关于fetch封装使用的自定义hooks
+    const client = useHttp();
 
     useEffect(() => {// 获取list的
-        fetch(`${apiURL}/projects?${qs.stringify(cleanObject(debouncedParam))}`).then(async response => {//待填充URL
-            if (response.ok) {
-                setList(await response.json())
-            }
-        })
+        // 直接使用fetch
+        // fetch(`${apiURL}/projects?${qs.stringify(cleanObject(debouncedParam))}`).then(async response => {//待填充URL
+        //     if (response.ok) {
+        //         setList(await response.json())
+        //     }
+        // })
+        // 使用我们封装过后，加入了携带token的自定义hooks
+        client('projects', { data: cleanObject(debouncedParam) }).then(setList);
     }, [debouncedParam]);
     // useEffect(() => {// 获取users
     //     fetch(`${apiURL}/users`).then(async response => {//待填充URL
@@ -30,11 +36,13 @@ export const ProjectListScreen = () => {
     // }, [])
     // 使用自定义的useMount，代表能页面刚加载执行一个回调,这样就不用使用useEffect后带个[]
     useMount(() => {// 获取users
-        fetch(`${apiURL}/users`).then(async response => {//待填充URL
-            if (response.ok) {
-                setUsers(await response.json())
-            }
-        })
+        client('users').then(setUsers);//第二个参数有默认值，所以不用传
+        // client这个使用自定义hooks得到的方法代替了下面的代码
+        // fetch(`${apiURL}/users`).then(async response => {//待填充URL
+        //     if (response.ok) {
+        //         setUsers(await response.json())
+        //     }
+        // })
     })
     return (
         <>
