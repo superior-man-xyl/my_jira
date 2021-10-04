@@ -42,5 +42,23 @@ export const http = async (endpoint: string, { data, token, headers, ...customCo
 export const useHttp = () => {//做一个可以自动携带JWT Token的方法来结合上面封装过后的fetch
     const { user } = useAuth();//这是之前做的自定义hooks，用于全局获取user和几个方法
     return (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token })//使用rest参数，以后传参数可以分开传，而且类型定义时可以按照[xxxx]
-    // 这个Parameters是typescript里面的一种操作符
+    // 这个Parameters是typescript里面的一种类型(准确是 utility Types 工具类型)，且<>里的typeof是typescript中的静态环境中运行的typeof，用于获得函数的参数的类型，接着交给Parameter读出来
+    // 联合类型
+    // let myNumber : string | number
+    // let herNumber : string | number
+    // 如何节省代码呢
+    // 类型类型联名
+    // NumberType = string | number //这种情况下interface无法代替类型联名
+    // let hisNumber : NumberType = '6';
+    // 很多情况下联合类型和interface可以互换使用，interface无法实现utility Types
+    // utility Types 的用法：
+    // 用泛型<>给他传入一个其他类型，然后utility types 对其进行某种操作
+    // 其他工具类型
+    // Pritial<T> 把T的所有属性变为可选。
+    // Readonly<T> 变只读
+    // Record<K,T> 生成一个接口，属性为K的所有属性，k的所有属性都有T的类型
+    // Pick<T,K> 抽取T里的属性，属性来自K.
+    // Omit<T,K>和Pick相反（去除属性k）
+    // Parameters<T> T是Function，提取函数里返回值为tuple
+    // Exclude<Type, ExcludedUnion>通过从Type可分配给的所有联合成员中排除来构造类型ExcludedUnion。
 }
