@@ -45,4 +45,4 @@ export const register = (data: { username: string, password: string }) => {
     });
 }
 
-export const logout = () => window.localStorage.removeItem(localStoragekey)
+export const logout = async () => window.localStorage.removeItem(localStoragekey)//使用async，之后就会返回一个promise对象，就可以使用then，做个清除user的操作

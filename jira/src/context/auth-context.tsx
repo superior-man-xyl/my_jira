@@ -33,7 +33,9 @@ export const AuthProvide = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const login = (form: AuthForm) => auth.login(form).then(user => setUser(user));
     const register = (form: AuthForm) => auth.register(form).then(user => setUser(user));
-    const logout = () => auth.logout();
+    const logout = () => auth.logout().then(()=>{
+        setUser(null)
+    });
 
     useMount(() => {//页面加载时调用，保证user值一直存在
         bootstrapUser().then(setUser)

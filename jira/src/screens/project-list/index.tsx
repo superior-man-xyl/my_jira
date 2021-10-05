@@ -1,11 +1,11 @@
 import { List } from "./list";
 import { SearchPanel } from "./search-panel";
 import React, { useState, useEffect } from "react";
-import * as qs from 'qs';//qs是一个url参数转化（parse和stringify）的js库。 
-import { cleanObject, useMount, useDebounce } from "utils"; //这个方法用于清理对象的空值，为了防止
+// import * as qs from 'qs';//qs是一个url参数转化（parse和stringify）的js库。 
+import { cleanObject, useMount, useDebounce } from "utils"; //这个方法用于清理对象的空值，为了防止异常
 import { useHttp } from "utils/http";
 
-const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
+// const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
 export const ProjectListScreen = () => {
     const [param, setparam] = useState({
         name: '',

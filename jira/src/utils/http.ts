@@ -61,4 +61,5 @@ export const useHttp = () => {//做一个可以自动携带JWT Token的方法来
     // Omit<T,K>和Pick相反（去除属性k）
     // Parameters<T> T是Function，提取函数里返回值为tuple
     // Exclude<Type, ExcludedUnion>通过从Type可分配给的所有联合成员中排除来构造类型ExcludedUnion。
+    
 }

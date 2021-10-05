@@ -34,3 +34,7 @@ ts是面向接口编程的，而不是面向对象编程，就是说为某函数
 ## 使用fetch抽象通用http请求方法，增强通用性
 解决的问题：怎么样使每次请求都自动的带上token。
 utils下建立了一个http.ts，来封装fetch
+
+## css in js
+- 通过antd留的配置入口，配置less变量，来重新定义其预先定义好的主题颜色，使用CRACO
+- 更改package.json里的脚本，将"react-scripts start"改为"craco start"
