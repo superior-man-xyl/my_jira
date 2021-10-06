@@ -1,6 +1,7 @@
 import React, { FormEvent } from "react";
 import { useAuth } from '../context/auth-context';
-import { Form, Input, Button } from 'antd';
+import { Form, Input } from 'antd';
+import { Longbutton } from "unauthenticated-app";
 
 // const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
 export const LoginScreen = () => {
@@ -25,7 +26,7 @@ export const LoginScreen = () => {
             <Input placeholder={'密码'} type="password" id={'username'} />
         </Form.Item>
         <Form.Item>
-            <Button type={"primary"} htmlType="submit">登陆</Button>
+            <Longbutton type={"primary"} htmlType="submit">登陆</Longbutton>
         </Form.Item>
     </Form>
 }

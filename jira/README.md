@@ -38,3 +38,4 @@ utils下建立了一个http.ts，来封装fetch
 ## css in js
 - 通过antd留的配置入口，配置less变量，来重新定义其预先定义好的主题颜色，使用CRACO
 - 更改package.json里的脚本，将"react-scripts start"改为"craco start"
+- 使用emotion，做css-in-js方案，用js来写css
