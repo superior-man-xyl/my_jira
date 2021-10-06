@@ -3,19 +3,30 @@ import React from "react";
 import { ProjectListScreen } from "screens/project-list";
 import styled from "@emotion/styled";
 import { Row } from "components/lib";
+import { ReactComponent as SoftwareLogo } from 'assets/software-logo.svg'//将其作为一个react组件
+import { Dropdown, Menu } from "antd";
 
 export const AuthenticatedApp = () => {
     //登陆后，还要有登出
-    const { logout } = useAuth();//使用这个自定义hooks，全局内任意使用其中的方法
+    const { user, logout } = useAuth();//使用这个自定义hooks，全局内任意使用其中的方法
     return <Container>
         <Header between={true}>
             <HeaderLeft gap={true}>
-                <HeaderItem>Logo</HeaderItem>
+                <SoftwareLogo width={'18rem'} color={'rgb(38,132,255)'} />
                 <HeaderItem>项目</HeaderItem>
                 <HeaderItem>用户</HeaderItem>
             </HeaderLeft>
             <HeaderRight>
-                <button onClick={logout}>退出登陆</button>
+                {/* <button onClick={logout}>退出登陆</button> */}
+                <Dropdown overlay={
+                <Menu>
+                    <Menu.Item key={'logout'}>
+                        <a onClick={logout}>退出登陆</a>
+                    </Menu.Item>
+                </Menu>
+            }>
+                <a onClick={(e)=>e.preventDefault()}>Hi! {user?.name}</a>
+            </Dropdown>
             </HeaderRight>
         </Header>
         <Main>
@@ -32,9 +43,12 @@ grid-template-rows: 6rem 1fr 6rem;
 height: 100vh;
 `;
 const Header = styled(Row)`
+padding: 3.2rem;
+box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+z-index:1;
 /* display: flex;
 flex-direction: row;
-align-items: center; */
+align-items: center; 写在了Row里*/
 `;
 const HeaderLeft = styled(Row)`//使用这个Row，定义的复用css组件
 `;

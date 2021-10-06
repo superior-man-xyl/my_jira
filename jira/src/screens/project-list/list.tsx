@@ -1,13 +1,15 @@
 import React from "react"
 import { User } from "./search-panel"
 import { Table } from "antd"
+import dayjs from 'dayjs'
 
 interface Project {
     id: number,
     name: string,
     personId: number,
-    organaization: string,
+    organization: string,
     pin: boolean,
+    created: number,
 }
 interface ListProps {
     list: Project[],
@@ -19,10 +21,20 @@ export const List = ({ users, list }: ListProps) => {
         dataIndex: 'name',
         sorter: (a, b) => a.name.localeCompare(b.name)//这个locareCompar可以排序中文字符
     }, {
+        title: '部门',
+        dataIndex: 'organization',
+    },{
         title: '负责人',
         render(value, item) {
             return <span>
                 {(users.find((user) => user.id === item.personId))?.name || '未知'}
+            </span>
+        }
+    },{
+        title: '创建时间',
+        render(value,item){
+            return <span>
+                {item.created ? dayjs(item.created).format('YYYY-MM-DD'):'无'}
             </span>
         }
     }]} dataSource={list} />

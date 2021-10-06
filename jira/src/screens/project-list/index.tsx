@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 // import * as qs from 'qs';//qs是一个url参数转化（parse和stringify）的js库。 
 import { cleanObject, useMount, useDebounce } from "utils"; //这个方法用于清理对象的空值，为了防止异常
 import { useHttp } from "utils/http";
+import styled from "@emotion/styled";
 
 // const apiURL = process.env.REACT_APP_API_URL; // 这里REACT_APP_API_URL有两个变量在.env 和 .env.development
 export const ProjectListScreen = () => {
@@ -45,9 +46,14 @@ export const ProjectListScreen = () => {
         // })
     })
     return (
-        <>
+        <Container>
+            <h1>项目列表</h1>
             <SearchPanel param={param} users={users} setparam={setparam} />
             <List list={list} users={users} />
-        </>
+        </Container>
     )
 }
+
+const Container = styled.div`
+padding: 3.2rem;
+`

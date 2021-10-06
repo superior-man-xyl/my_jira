@@ -4369,6 +4369,11 @@ date-fns@2.x:
   resolved "https://registry.nlark.com/date-fns/download/date-fns-2.24.0.tgz?cache=0&sync_timestamp=1631857260020&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdate-fns%2Fdownload%2Fdate-fns-2.24.0.tgz#7d86dc0d93c87b76b63d213b4413337cfd1c105d"
   integrity sha1-fYbcDZPIe3a2PSE7RBMzfP0cEF0=
 
+datjs@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmmirror.com/datjs/download/datjs-0.0.1.tgz#85ad3092b0f3e72f62f931f51c3f00e991f0bc72"
+  integrity sha1-ha0wkrDz5y9i+TH1HD8A6ZHwvHI=
+
 dayjs@1.x:
   version "1.10.7"
   resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
