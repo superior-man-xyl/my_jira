@@ -23,7 +23,7 @@ export const LoginScreen = () => {
         </Form.Item>
         <Form.Item name='password' rules={[{ required: true, message: '请输入密码' }]}>
             {/* <label htmlFor="password">密码：</label> */}
-            <Input placeholder={'密码'} type="password" id={'username'} />
+            <Input placeholder={'密码'} type="password" id={'password'} />
         </Form.Item>
         <Form.Item>
             <Longbutton type={"primary"} htmlType="submit">登陆</Longbutton>

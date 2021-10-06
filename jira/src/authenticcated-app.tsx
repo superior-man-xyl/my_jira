@@ -4,7 +4,7 @@ import { ProjectListScreen } from "screens/project-list";
 import styled from "@emotion/styled";
 import { Row } from "components/lib";
 import { ReactComponent as SoftwareLogo } from 'assets/software-logo.svg'//将其作为一个react组件
-import { Dropdown, Menu } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 
 export const AuthenticatedApp = () => {
     //登陆后，还要有登出
@@ -21,11 +21,11 @@ export const AuthenticatedApp = () => {
                 <Dropdown overlay={
                 <Menu>
                     <Menu.Item key={'logout'}>
-                        <a onClick={logout}>退出登陆</a>
+                        <Button type={'link'} onClick={logout}>退出登陆</Button>
                     </Menu.Item>
                 </Menu>
             }>
-                <a onClick={(e)=>e.preventDefault()}>Hi! {user?.name}</a>
+                <Button type={'link'} onClick={(e)=>e.preventDefault()}>Hi! {user?.name}</Button>
             </Dropdown>
             </HeaderRight>
         </Header>

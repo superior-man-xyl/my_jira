@@ -27,6 +27,7 @@ export const ProjectListScreen = () => {
         // })
         // 使用我们封装过后，加入了携带token的自定义hooks
         client('projects', { data: cleanObject(debouncedParam) }).then(setList);
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [debouncedParam]);
     // useEffect(() => {// 获取users
     //     fetch(`${apiURL}/users`).then(async response => {//待填充URL

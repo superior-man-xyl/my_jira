@@ -3,11 +3,12 @@ import {
     useState
 } from "react";
 
-export const isFalsy = (value: unknown) => {
-    return value === 0 ? false : !value;
+export const isFalsy = (value: unknown) => {// 有个bug，当{isChecked: false}这样的值也会被过滤掉，但这是有用的值
+    return value === 0 ? false : !value;//使用下面的isVoid代替
 }
+export const isVoid = (value: unknown) => value === undefined || value === null || value === '';//这些情况被当作无意义
 //在一个函数里，传入一个对象本身是不好的，容易污染传入的对象，因为怕后面的代码会更改到原对象
-export const cleanObject = (object: object) => {
+export const cleanObject = (object: { [key: string]: unknown }) => {//表示只要这样的键值对的对象，使用object就太广了，函数也会被归结于object类型
     //怎么做呢，对传入的对象做一个浅拷贝
     if (!object) {
         return {};
@@ -16,10 +17,8 @@ export const cleanObject = (object: object) => {
         ...object
     };
     Object.keys(result).forEach((key) => {
-        //@ts-ignore
         const value = result[key];
-        if (isFalsy(value)) {
-            //@ts-ignore
+        if (isVoid(value)) {
             delete result[key]
         }
     })
@@ -31,6 +30,7 @@ export const cleanObject = (object: object) => {
 export const useMount = (callback: () => void) => {
     useEffect(() => {
         callback();
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 }
 
